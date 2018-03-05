@@ -219,10 +219,11 @@ If python-wxgtk2.8 not available (e.g. Ubuntu 16.04):
 
 * Install extra dependencies (Linux only):
 ```
-  sudo apt-get install libtinfo-dev libjpeg-dev
+  sudo apt-get install libtinfo-dev libjpeg-dev libpng-dev
 ```
 
-* (to use accelerated ISP) Install LLVM
+* (to use accelerated ISP) Install LLVM, reference: http://releases.llvm.org/4.0.1/docs/CMake.html, http://blog.csdn.net/fan2273/article/details/76439042
+
 ```
   cd ~
   svn co https://llvm.org/svn/llvm-project/llvm/branches/release_37 llvm3.7
@@ -235,7 +236,7 @@ If python-wxgtk2.8 not available (e.g. Ubuntu 16.04):
   export LLVM_CONFIG=$HOME/llvm3.7/build/bin/llvm-config
   export CLANG=$HOME/llvm3.7/build/bin/clang
 ```
-
+here may be some errors, please install LLVM according to  http://blog.csdn.net/fan2273/article/details/76439042
 * (to use accelerated ISP) Install Halide (last known version to work from Mar 15 2017)
 ```
   cd ~
@@ -245,6 +246,7 @@ If python-wxgtk2.8 not available (e.g. Ubuntu 16.04):
   mkdir cmake_build
   cd cmake_build
   cmake -DLLVM_DIR=$HOME/llvm3.7/build/share/llvm/cmake -DCMAKE_BUILD_TYPE=Release -DLLVM_VERSION=37 -DWARNINGS_AS_ERRORS=OFF ..
+  make
 ```
 
 ## Compiling the Surround 360 Rendering Software
